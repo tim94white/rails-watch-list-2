@@ -1,0 +1,16 @@
+<div class="m-4">
+  <h1>Movie Watch List</h1>
+  <% if @lists.exists? %>
+    <% @lists.each do |list| %>
+      <div class="co-12 colsm-6 col-md-4">
+        <%= link_to list_path(list), class:'text-decoration-none' do %>
+          <%= list.name %>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <h2>You currently haven't created any lists</h2>
+  <% end %>
+
+  <%= link_to "Create new Watch List", new_list_path %>
+</div>

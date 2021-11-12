@@ -1,0 +1,8 @@
+<div class="m-4">
+  <h1>Create a new Watch List</h1>
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.button :submit %>
+  <% end %>
+  <%= link_to "Back to Watch List", lists_path %>
+</div>

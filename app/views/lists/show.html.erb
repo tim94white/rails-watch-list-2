@@ -1,0 +1,14 @@
+<div class="m-4">
+  <h1><%= @list.name %></h1>
+  <% @list.movies.each do |movie| %>
+    <%= movie.title %>
+    <br>
+    <%= movie.overview %>
+  <% end %>
+  <br>
+  <%= link_to "Delete List", list_path(@list), method: :delete , data: { confirm: "Are you sure?" } %>
+  <br>
+   <%= link_to "Add Movie", new_list_bookmark_path(@list) %>
+  <br>
+  <%= link_to "Back to Movie Watch List", lists_path %>
+</div>

@@ -1,0 +1,9 @@
+<div class="m-4">
+  <h1>Add a movie to "<%= @list.name %>"</h1>
+  <%= simple_form_for([@list, @bookmark]) do |f| %>
+    <%= f.association :movie, prompt: 'Select a movie from the dropdown' %>
+    <%= f.input :comment, placeholder: 'Enter a comment about the movie' %>
+    <%= f.button :submit %>
+  <% end %>
+  <%= link_to "Back to Watch List", list_path(@list) %>
+</div>
