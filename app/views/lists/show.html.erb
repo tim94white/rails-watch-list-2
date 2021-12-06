@@ -5,10 +5,29 @@
     <br>
     <%= movie.overview %>
   <% end %>
-  <br>
-  <%= link_to "Delete List", list_path(@list), method: :delete , data: { confirm: "Are you sure?" } %>
-  <br>
-   <%= link_to "Add Movie", new_list_bookmark_path(@list) %>
-  <br>
-  <%= link_to "Back to Movie Watch List", lists_path %>
+  <h1>Add a review</h1>
+  <%= simple_form_for [@list, @review] do |f| %>
+    <%= f.input :comment, prompt: 'type your review here...' %>
+    <%= f.input :rating, collection: 1..5, placeholder: 'give a rating' %>
+    <%= f.button :submit, class: 'common-button boring-button ml-2' %>
+  <% end %>
+  <div class="review-container">
+    <% if @list.reviews.empty? %>
+      <h2>There are currently no reviews</h2>
+    <% else %>
+      <h2>See reviews below:</h2>
+      <% @list.reviews.each do |review| %>
+        <div class="ind-review">
+          <h3><%= review.comment %></h3>
+          <h3><%= review.rating %></h3>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="button-container">
+    <%= link_to "Add Movie", new_list_bookmark_path(@list), class: 'common-button key-button' %>
+    <%= link_to "Delete List", list_path(@list), method: :delete , data: { confirm: "Are you sure?" }, class: 'common-button boring-button' %>
+    <%= link_to "Back to Movie Watch List", lists_path, class: 'common-button boring-button' %>
+  </div>
+
 </div>

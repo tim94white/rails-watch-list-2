@@ -18,6 +18,8 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @review = Review.new
+    # (list: @list)
   end
 
   def destroy
